@@ -22,39 +22,30 @@ class Solution {
 
 class NormalSolution : public Solution {
  public:
+  void calculateSum(TreeNode *root, int sum) {
+    if (root == nullptr) {
+      return;
+    }
+    sum += root->val;
+
+    if (root->left == nullptr and root->right == nullptr) {
+      sums_.push_back(sum);
+      return;
+    };
+
+    calculateSum(root->left, sum);
+    calculateSum(root->right, sum);
+  }
+
   bool hasPathSum(TreeNode *root, int targetSum) override {
-    if (root == nullptr) return false;
-    if (root->left == nullptr and root->right == nullptr)
-      if (root->val == 0) return false;
-    bool result;
-    sum_ += root->val;
-    if (root->left != nullptr) {
-      result = hasPathSum(root->left, targetSum);
-      if (!result)
-        result = hasPathSum(root->left, targetSum);
-      else
-        return result;
-    }
-    if (sum_ == targetSum)
-      return true;
-    else
-      sum_ = 0;
-    if (root->right != nullptr) {
-      result = hasPathSum(root->right, targetSum);
-      if (!result)
-        result = hasPathSum(root->right, targetSum);
-      else
-        return result;
-    }
-    if (sum_ == targetSum)
-      return true;
-    else
-      sum_ = 0;
-    return false;
+    calculateSum(root, 0);
+
+    for (auto &el : sums_) std::cout << "Vector: " << el << std::endl;
+    std::cout << "Count: " << std::count(sums_.begin(), sums_.end(), targetSum) << std::endl;
   }
 
  private:
-  int sum_ = 0;
+  std::vector<int> sums_;
 };
 
 template <class Solution>
@@ -91,6 +82,12 @@ int main() {
   {
     int targetSum = 0;
     TreeNode root(0);
+    pass<Solution>(&root, targetSum);
+  }
+  {
+    int targetSum = 0;
+    TreeNode first_left(2);
+    TreeNode root(1, &first_left, nullptr);
     pass<Solution>(&root, targetSum);
   }
   return 0;
