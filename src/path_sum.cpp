@@ -40,8 +40,7 @@ class NormalSolution : public Solution {
   bool hasPathSum(TreeNode *root, int targetSum) override {
     calculateSum(root, 0);
 
-    for (auto &el : sums_) std::cout << "Vector: " << el << std::endl;
-    std::cout << "Count: " << std::count(sums_.begin(), sums_.end(), targetSum) << std::endl;
+    return std::count(sums_.begin(), sums_.end(), targetSum);
   }
 
  private:
