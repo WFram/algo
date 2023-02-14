@@ -33,6 +33,7 @@ class NormalSolution : public Solution {
       return;
     };
 
+    // TODO: it anyways calculates the whole sum, because it will call calculateSum from the same root
     calculateSum(root->left, sum);
     calculateSum(root->right, sum);
   }
@@ -45,6 +46,26 @@ class NormalSolution : public Solution {
 
  private:
   std::vector<int> sums_;
+};
+
+class FastSolution : public Solution {
+ public:
+  bool hasPathSum(TreeNode *root, int targetSum) override {
+    if (!root) return false;
+    targetSum -= root->val;
+    if (targetSum == 0 and !root->left && !root->right) return true;
+    return hasPathSum(root->left, targetSum) or hasPathSum(root->right, targetSum);
+  }
+};
+
+class MemoryEfficientSolution : public Solution {
+ public:
+  bool hasPathSum(TreeNode *root, int targetSum, int sumSoFar = 0) {
+    if (root == nullptr) return false;
+    sumSoFar += root->val;
+    if (sumSoFar == targetSum and root->left == nullptr and root->right == nullptr) return true;
+    return (hasPathSum(root->left, targetSum, sumSoFar) or hasPathSum(root->right, targetSum, sumSoFar));
+  }
 };
 
 template <class Solution>
