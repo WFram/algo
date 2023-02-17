@@ -88,6 +88,8 @@ void pass(TreeNodePtr root, int targetSum) {
 int main() {
   using Solution = NormalSolution;
 
+  // TODO: do we need make them shared? For this case seems to be more than enough
+  // TODO: do we need to move?
   {
     int targetSum = 22;
     TreeNodePtr root = std::make_shared<TreeNode>(5);

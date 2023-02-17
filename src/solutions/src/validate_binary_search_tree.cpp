@@ -22,36 +22,34 @@ class Solution {
 
 class NormalSolution : public Solution {
  public:
+  void find_minmax(TreeNode *root) {}
+
   bool isValidBST(TreeNode *root) override {
-    bool return_value{true};
+    if (!root) return true;
 
-    if (root->left != nullptr)
-      if (root->left->val > root->val) return_value = false;
-    if (root->right != nullptr)
-      if (root->right->val < root->val) return_value = false;
+    // TODO: maybe take some insights from path sum????
 
-    if (root->val < min_value_) min_value_ = root->val;
-    if (root->val > max_value_) max_value_ = root->val;
-
-    pairs.emplace_back(min_value_, max_value_);
-
-    // TODO: we should somehow move step by step from one level to another
-    // TODO: make it in one line (return_value)
     if (root->left != nullptr) {
-      pairs.emplace_back(min_value_, max_value_);
-      return_value &= isValidBST(root->left);
+      if (root->left->val < root->val and root->val <= min_value_) is_valid &= true;
+      if (root->val < min_value_) min_value_ = root->val;
+      if (root->val > max_value_) max_value_ = root->val;
+      is_valid &= isValidBST(root->left);
     }
 
     if (root->right != nullptr) {
-      return_value &= isValidBST(root->right);
+      if (root->right->val > root->val and root->val >= max_value_) is_valid &= true;
+      if (root->val < min_value_) min_value_ = root->val;
+      if (root->val > max_value_) max_value_ = root->val;
+      is_valid &= isValidBST(root->right);
     }
-    return return_value;
+
+    return is_valid;
   }
 
  private:
   int min_value_{std::numeric_limits<int>::max()};
   int max_value_{std::numeric_limits<int>::min()};
-  std::vector<std::pair<int, int>> pairs;
+  bool is_valid{true};
 };
 
 template <class Solution>
@@ -93,6 +91,12 @@ int main() {
     TreeNode first_right(5, &second_right_left, &second_right_right);
     TreeNode first_left(1, &second_left_left, &second_left_right);
     TreeNode root(3, &first_left, &first_right);
+    pass<Solution>(&root);
+  }
+  {
+    TreeNode first_left(2);
+    TreeNode first_right(2);
+    TreeNode root(2, &first_left, &first_right);
     pass<Solution>(&root);
   }
   return 0;
