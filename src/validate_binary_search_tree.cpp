@@ -2,6 +2,7 @@
 // Created by wfram on 2/5/23.
 //
 
+#include <functional>
 #include <iostream>
 #include <vector>
 
@@ -22,34 +23,21 @@ class Solution {
 
 class NormalSolution : public Solution {
  public:
-  void find_minmax(TreeNode *root) {}
-
   bool isValidBST(TreeNode *root) override {
-    if (!root) return true;
+    std::function<bool(TreeNode *)> in_order = [&](TreeNode *node) {
+      if (node == nullptr) return true;
+      if (!in_order(node->left)) return false;
+      if (node->val <= previous_value_) return false;
+      previous_value_ = node->val;
+      return in_order(node->right);
+    };
 
-    // TODO: maybe take some insights from path sum????
-
-    if (root->left != nullptr) {
-      if (root->left->val < root->val and root->val <= min_value_) is_valid &= true;
-      if (root->val < min_value_) min_value_ = root->val;
-      if (root->val > max_value_) max_value_ = root->val;
-      is_valid &= isValidBST(root->left);
-    }
-
-    if (root->right != nullptr) {
-      if (root->right->val > root->val and root->val >= max_value_) is_valid &= true;
-      if (root->val < min_value_) min_value_ = root->val;
-      if (root->val > max_value_) max_value_ = root->val;
-      is_valid &= isValidBST(root->right);
-    }
-
-    return is_valid;
+    if (!root->left and !root->right) return true;
+    return in_order(root);
   }
 
  private:
-  int min_value_{std::numeric_limits<int>::max()};
-  int max_value_{std::numeric_limits<int>::min()};
-  bool is_valid{true};
+  long int previous_value_{std::numeric_limits<long int>::min()};
 };
 
 template <class Solution>
@@ -76,6 +64,7 @@ int main() {
     pass<Solution>(&root);
   }
   {
+    // False
     TreeNode first_left(4);
     TreeNode second_left(3);
     TreeNode second_right(7);
@@ -84,6 +73,7 @@ int main() {
     pass<Solution>(&root);
   }
   {
+    // True
     TreeNode second_left_left(0);
     TreeNode second_left_right(2);
     TreeNode second_right_left(4);
