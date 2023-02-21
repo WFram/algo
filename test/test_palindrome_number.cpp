@@ -6,16 +6,13 @@
 
 #include <palindrome_number.h>
 
-template <class Solution>
-void pass(int x) {
-  Solution solution;
-  bool result = solution.isPalindrome(x);
-  std::cout << "Is a palindrome? " << result << std::endl;
-}
-
-int main() {
+TEST(test_palindrome_number, test_palindrome_number) {
   using Solution = palindrome_number::NormalSolution;
-  pass<Solution>(121);
-  pass<Solution>(-121);
-  pass<Solution>(10);
+  Solution solution;
+  bool result = solution.isPalindrome(121);
+  ASSERT_EQ(result, true);
+  result = solution.isPalindrome(-121);
+  ASSERT_EQ(result, false);
+  result = solution.isPalindrome(10);
+  ASSERT_EQ(result, false);
 }

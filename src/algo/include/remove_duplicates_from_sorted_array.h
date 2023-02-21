@@ -15,6 +15,8 @@ namespace remove_duplicates_from_sorted_array {
 
 class Solution {
  public:
+  Solution() = default;
+
   virtual int removeDuplicates(std::vector<int> &nums) = 0;
 };
 

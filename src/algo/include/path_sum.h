@@ -14,6 +14,8 @@ namespace path_sum {
 
 struct TreeNode {
   int val;
+  // TODO: do we need make them shared? For this case seems to be more than enough
+  // TODO: do we need to move?
   std::shared_ptr<TreeNode> left;
   std::shared_ptr<TreeNode> right;
   TreeNode() : val(0), left(nullptr), right(nullptr) {}
