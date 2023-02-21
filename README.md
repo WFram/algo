@@ -1,1 +1,1 @@
-# LeetСode solutions
+# Algorithms and Data Structures
