@@ -6,40 +6,6 @@
 #include <iostream>
 #include <vector>
 
-// https://leetcode.com/problems/validate-binary-search-tree/
-struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
-
-class Solution {
- public:
-  virtual bool isValidBST(TreeNode *root) = 0;
-};
-
-class NormalSolution : public Solution {
- public:
-  bool isValidBST(TreeNode *root) override {
-    std::function<bool(TreeNode *)> in_order = [&](TreeNode *node) {
-      if (node == nullptr) return true;
-      if (!in_order(node->left)) return false;
-      if (node->val <= previous_value_) return false;
-      previous_value_ = node->val;
-      return in_order(node->right);
-    };
-
-    if (!root->left and !root->right) return true;
-    return in_order(root);
-  }
-
- private:
-  long int previous_value_{std::numeric_limits<long int>::min()};
-};
-
 template <class Solution>
 void pass(TreeNode *root) {
   Solution solution;
@@ -50,12 +16,14 @@ void pass(TreeNode *root) {
 int main() {
   using Solution = NormalSolution;
   {
+    // True
     TreeNode first_left(1);
     TreeNode first_right(3);
     TreeNode root(2, &first_left, &first_right);
     pass<Solution>(&root);
   }
   {
+    // False
     TreeNode first_left(1);
     TreeNode second_left(3);
     TreeNode second_right(6);
@@ -84,6 +52,7 @@ int main() {
     pass<Solution>(&root);
   }
   {
+    // False
     TreeNode first_left(2);
     TreeNode first_right(2);
     TreeNode root(2, &first_left, &first_right);

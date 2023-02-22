@@ -9,24 +9,10 @@
 #include <iostream>
 #include <memory>
 
+#include <tree_node.h>
+
 // https://leetcode.com/problems/path-sum/
 namespace path_sum {
-
-struct TreeNode {
-  int val;
-  // TODO: do we need make them shared? For this case seems to be more than enough
-  // TODO: do we need to move?
-  std::shared_ptr<TreeNode> left;
-  std::shared_ptr<TreeNode> right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int val) : val(val), left(nullptr), right(nullptr) {}
-  TreeNode(int val, std::shared_ptr<TreeNode> left, std::shared_ptr<TreeNode> right)
-      : val(val), left(std::move(left)), right(std::move(right)) {}
-};
-
-using TreeNodePtr = std::shared_ptr<TreeNode>;
-
-void addTreeNode(TreeNodePtr root, TreeNodePtr left, TreeNodePtr right);
 
 class Solution {
  public:
