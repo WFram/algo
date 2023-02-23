@@ -16,6 +16,7 @@ set(SOLUTIONS_SRC_FILES
         ${SOLUTIONS_SRC_DIR}/palindrome_number.cpp
         ${SOLUTIONS_SRC_DIR}/path_sum.cpp
         ${SOLUTIONS_SRC_DIR}/validate_binary_search_tree.cpp
+        ${SOLUTIONS_SRC_DIR}/maximum_depth_of_binary_tree.cpp
         )
 
 #[[ CMAKE_CURRENT_SOURCE_DIR is /home/wfram/wf_leetcode  ]]

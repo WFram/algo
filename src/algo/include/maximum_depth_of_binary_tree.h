@@ -8,29 +8,21 @@
 #include <functional>
 #include <iostream>
 
+#include <tree_node.h>
+
 // https://leetcode.com/problems/maximum-depth-of-binary-tree/
 namespace maximum_depth_of_binary_tree {
-struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
 
 class Solution {
  public:
-  virtual int maxDepth(TreeNode *root) = 0;
+  virtual int maxDepth(TreeNodePtr root) = 0;
 };
 
 class NormalSolution : public Solution {
  public:
-  virtual int maxDepth(TreeNode *root) override;
-
- private:
-  unsigned char counter = 1;
+  virtual int maxDepth(TreeNodePtr root) override;
 };
+
 }  // namespace maximum_depth_of_binary_tree
 
 #endif  // WF_LEETCODE_MAXIMUM_DEPTH_OF_BINARY_TREE_H
