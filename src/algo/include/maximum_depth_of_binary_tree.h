@@ -20,7 +20,12 @@ class Solution {
 
 class NormalSolution : public Solution {
  public:
-  virtual int maxDepth(TreeNodePtr root) override;
+  int maxDepth(TreeNodePtr root) override;
+};
+
+class MemoryEfficientSolution : public Solution {
+ public:
+  int maxDepth(TreeNodePtr root) override;
 };
 
 }  // namespace maximum_depth_of_binary_tree
