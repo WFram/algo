@@ -2,8 +2,8 @@
 // Created by wfram on 2/17/23.
 //
 
-#ifndef WF_LEETCODE_PALINDROME_NUMBER_H
-#define WF_LEETCODE_PALINDROME_NUMBER_H
+#ifndef WF_ALGO_PALINDROME_NUMBER_H
+#define WF_ALGO_PALINDROME_NUMBER_H
 
 #include <iostream>
 #include <string>
@@ -35,4 +35,4 @@ class MemoryEfficientSolution : public Solution {
 
 }
 
-#endif  // WF_LEETCODE_PALINDROME_NUMBER_H
+#endif  // WF_ALGO_PALINDROME_NUMBER_H

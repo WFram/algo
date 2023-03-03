@@ -2,8 +2,8 @@
 // Created by wfram on 2/17/23.
 //
 
-#ifndef WF_LEETCODE_REMOVE_DUPLICATES_FROM_SORTED_ARRAY_H
-#define WF_LEETCODE_REMOVE_DUPLICATES_FROM_SORTED_ARRAY_H
+#ifndef WF_ALGO_REMOVE_DUPLICATES_FROM_SORTED_ARRAY_H
+#define WF_ALGO_REMOVE_DUPLICATES_FROM_SORTED_ARRAY_H
 
 #include <cassert>
 #include <chrono>
@@ -39,4 +39,4 @@ class MemoryEfficientSolution : public Solution {
 
 }  // namespace remove_duplicates_from_sorted_array
 
-#endif  // WF_LEETCODE_REMOVE_DUPLICATES_FROM_SORTED_ARRAY_H
+#endif  // WF_ALGO_REMOVE_DUPLICATES_FROM_SORTED_ARRAY_H

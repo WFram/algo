@@ -25,6 +25,11 @@ class NormalSolution : public Solution {
   long int previous_value_{std::numeric_limits<long int>::min()};
 };
 
+class MemoryEfficientSolution : public Solution {
+ public:
+
+};
+
 }  // namespace validate_binary_search_tree
 
 #endif  // WF_ALGO_VALIDATE_BINARY_SEARCH_TREE_H

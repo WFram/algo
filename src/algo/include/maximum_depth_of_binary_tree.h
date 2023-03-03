@@ -2,8 +2,8 @@
 // Created by wfram on 2/17/23.
 //
 
-#ifndef WF_LEETCODE_MAXIMUM_DEPTH_OF_BINARY_TREE_H
-#define WF_LEETCODE_MAXIMUM_DEPTH_OF_BINARY_TREE_H
+#ifndef WF_ALGO_MAXIMUM_DEPTH_OF_BINARY_TREE_H
+#define WF_ALGO_MAXIMUM_DEPTH_OF_BINARY_TREE_H
 
 #include <functional>
 #include <iostream>
@@ -30,4 +30,4 @@ class MemoryEfficientSolution : public Solution {
 
 }  // namespace maximum_depth_of_binary_tree
 
-#endif  // WF_LEETCODE_MAXIMUM_DEPTH_OF_BINARY_TREE_H
+#endif  // WF_ALGO_MAXIMUM_DEPTH_OF_BINARY_TREE_H

@@ -2,8 +2,8 @@
 // Created by wfram on 2/18/23.
 //
 
-#ifndef WF_LEETCODE_PATH_SUM_H
-#define WF_LEETCODE_PATH_SUM_H
+#ifndef WF_ALGO_PATH_SUM_H
+#define WF_ALGO_PATH_SUM_H
 
 #include <functional>
 #include <iostream>
@@ -41,4 +41,4 @@ class MemoryEfficientSolution : public Solution {
 
 }  // namespace path_sum
 
-#endif  // WF_LEETCODE_PATH_SUM_H
+#endif  // WF_ALGO_PATH_SUM_H
