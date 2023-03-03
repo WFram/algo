@@ -1,8 +1,8 @@
-#[[ CMAKE_SOURCE_DIR is /home/wfram/wf_leetcode ]]
 include_directories(${CMAKE_SOURCE_DIR}/src/algo/include)
 project_add_test(test_remove_duplicates_from_sorted_array test_remove_duplicates_from_sorted_array.cpp algo)
 project_add_test(test_palindrome_number test_palindrome_number.cpp algo)
 project_add_test(test_path_sum test_path_sum.cpp algo)
 project_add_test(test_validate_binary_search_tree test_validate_binary_search_tree.cpp algo)
 project_add_test(test_maximum_depth_of_binary_tree test_maximum_depth_of_binary_tree.cpp algo)
+project_add_test(test_symmetric_tree test_symmetric_tree.cpp algo)
 
